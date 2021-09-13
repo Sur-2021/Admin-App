@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "512764363150",
+    "project_id": "lnct-app-ecd7b",
+    "storage_bucket": "lnct-app-ecd7b.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:512764363150:android:107218675b88139c26e4df",
+        "android_client_info": {
+          "package_name": "com.example.myadminapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "512764363150-sgr5agij4nlcoe4la4de7s3ors8k3kpr.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC8IZFpH2krqKs14bIdoszKGvQnk-pvYyk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "512764363150-sgr5agij4nlcoe4la4de7s3ors8k3kpr.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
