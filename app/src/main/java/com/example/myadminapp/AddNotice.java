@@ -60,8 +60,8 @@ public class AddNotice extends AppCompatActivity {
         noticeTitle = findViewById(R.id.noticeTitle);
         uploadNoticeBtn = findViewById(R.id.uploadNoticeBtn);
 
-        reference = FirebaseDatabase.getInstance("gs://lnct-app-ecd7b.appspot.com").getReference(); // VVVVVIMP STEP
-        storageReference = FirebaseStorage.getInstance("gs://lnct-app-ecd7b.appspot.com").getReference();
+        reference = FirebaseDatabase.getInstance("https://lnct-bhopal-default-rtdb.asia-southeast1.firebasedatabase.app/").getReference(); // VVVVVIMP STEP
+        storageReference = FirebaseStorage.getInstance("gs://lnct-bhopal.appspot.com").getReference();
 
         pd = new ProgressDialog(AddNotice.this);
 
