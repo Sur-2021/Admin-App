@@ -64,7 +64,7 @@
             <de.hdodenhof.circleimageview.CircleImageView
                 android:layout_width="80dp"
                 android:layout_height="120dp"
-                android:src="@drawable/mee"
+                android:src="@drawable/bui"
                 android:layout_weight="0.5"
                 android:layout_gravity="center_horizontal"
                 android:id="@+id/teacherImage" />

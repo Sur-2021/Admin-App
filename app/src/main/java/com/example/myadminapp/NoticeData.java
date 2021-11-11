@@ -1,7 +1,7 @@
 package com.example.myadminapp;
 
 public class NoticeData {
-    private String title, image, date, time , key;
+    String title, image, date, time , key;
 
     public  NoticeData() {
 

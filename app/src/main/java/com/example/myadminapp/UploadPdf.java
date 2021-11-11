@@ -41,7 +41,7 @@ public class UploadPdf extends AppCompatActivity {
     TextView pdfTextView;
     Button uploadPdfBtn;
 
-    private DatabaseReference databaseReference;
+    private DatabaseReference databaseReference, dbRef;
     private StorageReference storageReference;
     private String downloadUrl = "";
     private String pdfName ;

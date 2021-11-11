@@ -60,8 +60,11 @@ public class AddNotice extends AppCompatActivity {
         noticeTitle = findViewById(R.id.noticeTitle);
         uploadNoticeBtn = findViewById(R.id.uploadNoticeBtn);
 
-        reference = FirebaseDatabase.getInstance("https://lnct-bhopal-default-rtdb.asia-southeast1.firebasedatabase.app/").getReference(); // VVVVVIMP STEP
-        storageReference = FirebaseStorage.getInstance("gs://lnct-bhopal.appspot.com").getReference();
+//        reference = FirebaseDatabase.getInstance("https://lnct-bhopal-default-rtdb.asia-southeast1.firebasedatabase.app/").getReference(); // VVVVVIMP STEP
+//        storageReference = FirebaseStorage.getInstance("gs://lnct-bhopal.appspot.com").getReference();
+
+        reference = FirebaseDatabase.getInstance().getReference(); // VVVVVIMP STEP
+        storageReference = FirebaseStorage.getInstance().getReference();
 
         pd = new ProgressDialog(AddNotice.this);
 
@@ -92,8 +95,8 @@ public class AddNotice extends AppCompatActivity {
             }
         });
 
-
     }
+
 
     private void uploadData() {
         reference = reference.child("Notice");
@@ -101,7 +104,7 @@ public class AddNotice extends AppCompatActivity {
 
         String title = noticeTitle.getText().toString();
 
-        //for date and time of notice
+        //for current date and time of notice
         Calendar calDate = Calendar.getInstance();
         SimpleDateFormat currdate = new SimpleDateFormat("dd-MM-yy");
         String date = currdate.format(calDate.getTime());
@@ -110,9 +113,12 @@ public class AddNotice extends AppCompatActivity {
         SimpleDateFormat currTime = new SimpleDateFormat("hh:mm:a");
         String time = currTime.format(calTime.getTime());
 
-        //make obj of NoticeData
+        //make obj of NoticeData class (custom class .. which we have created)
         NoticeData noticeData = new NoticeData(title, downloadUrl, date, time, uniqueKey);
 
+        //now storing data to firebase
+
+        //....is unique key me Notice ke ander Key me saara data stored hai islye child() k argument me unique key is pass kr di
         reference.child(uniqueKey).setValue(noticeData).addOnSuccessListener(new OnSuccessListener<Void>() {
             @Override
             public void onSuccess(Void unused) {
@@ -132,10 +138,13 @@ public class AddNotice extends AppCompatActivity {
         pd.setMessage("Uploading...");
         pd.show();
 
+        //first compress image and then will upload it
         ByteArrayOutputStream baos = new ByteArrayOutputStream();
         bitmap.compress(Bitmap.CompressFormat.JPEG, 50, baos);
 
-        byte[] finalImg = baos.toByteArray();
+        byte[] finalImg = baos.toByteArray();// this will be the final image which we r going to store in db
+
+        // now how to store....see below
         final StorageReference filePath;
         filePath = storageReference.child("Notice").child(finalImg + "jpg");
 
@@ -146,6 +155,10 @@ public class AddNotice extends AppCompatActivity {
             @Override
             public void onComplete(@NonNull Task<UploadTask.TaskSnapshot> task) {
                if(task.isSuccessful()) {
+
+                   //if task is successfull means ki image cloud storage pr upload hogyi and now we want its path so which
+                   //we can upload it to database also
+
                    upTask.addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                        @Override
                        public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
@@ -161,7 +174,7 @@ public class AddNotice extends AppCompatActivity {
                }
                else {
                    pd.dismiss();
-                   Toast.makeText(AddNotice.this, "Something went wrong!22", Toast.LENGTH_SHORT).show();  //yhn hai gdbd
+                   Toast.makeText(AddNotice.this, "Something went wrong in uploading image.", Toast.LENGTH_SHORT).show();  //yhn hai gdbd
                }
             }
         });

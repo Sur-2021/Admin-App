@@ -48,7 +48,7 @@ public class UploadImage extends AppCompatActivity {
 
     String downloadUrl;
 
-    private DatabaseReference reference;
+    private DatabaseReference reference, dbRef;
     private StorageReference storageReference;
 
     @Override

@@ -13,7 +13,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.MyAdminApp">
-        <activity android:name=".Faculty.AddFaculty"></activity>
+        <activity android:name=".Faculty.UpdateTeacherActivity"></activity>
+        <activity android:name=".Faculty.AddFaculty" />
         <activity android:name=".Faculty.UpdateFaculty" />
         <activity android:name=".UploadPdf" />
         <activity android:name=".UploadImage" />
